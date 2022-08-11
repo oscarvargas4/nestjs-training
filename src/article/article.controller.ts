@@ -48,6 +48,26 @@ export class ArticleController {
     @User('id') currentUserId: number
   ): Promise<ArticleResponseInterface> {
     const article = await this.articleService.updateBySlugId(slugId, currentUserId, updateArticleDto);
-    return await this.articleService.buildArticleResponse(article);
+    return this.articleService.buildArticleResponse(article);
+  }
+
+  @Post(':slug/favorite')
+  @UseGuards(AuthGuard)
+  async addArticleToFavorites(
+    @Param('slug') slugId: string,
+    @User('id') currentUserId: number
+  ): Promise<ArticleResponseInterface> {
+    const article = await this.articleService.addArticleToFavorites(slugId, currentUserId);
+    return this.articleService.buildArticleResponse(article);
+  }
+
+  @Delete(':slug/favorite')
+  @UseGuards(AuthGuard)
+  async removeArticleToFavorites(
+    @Param('slug') slugId: string,
+    @User('id') currentUserId: number
+  ): Promise<ArticleResponseInterface> {
+    const article = await this.articleService.removeArticleToFavorites(slugId, currentUserId);
+    return this.articleService.buildArticleResponse(article);
   }
 }

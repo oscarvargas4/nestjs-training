@@ -1,5 +1,5 @@
 import { UserEntity } from "@app/user/user.entity";
-import { HttpCode, HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DeleteResult, getRepository, Repository } from "typeorm";
 import { ArticleEntity } from "./article.entity";
@@ -18,10 +18,10 @@ export class ArticleService {
     private readonly userRepository: Repository<UserEntity>,
   ) { }
 
-  async findAll(currentUserId: number, query: any): Promise<ArticlesResponseInterface>{
+  async findAll(currentUserId: number, query: any): Promise<ArticlesResponseInterface> {
     const queryBuilder = getRepository(ArticleEntity)
-    .createQueryBuilder('articles')
-    .leftJoinAndSelect('articles.author', 'author');
+      .createQueryBuilder('articles')
+      .leftJoinAndSelect('articles.author', 'author');
 
     if (query.tag) {
       queryBuilder.andWhere('articles.tagList LIKE :tag', {
@@ -37,21 +37,49 @@ export class ArticleService {
         id: author.id
       });
     }
-    
+
+    if (query.favorited) {
+      const author = await this.userRepository.findOne({
+        username: query.favorited
+      },
+        { relations: ['favorites'] },
+      );
+      const ids = author.favorites.map(el => el.id);
+
+      if (ids.length > 0) { // Typeorm bug, evaluates the query even with empty ids
+        queryBuilder.andWhere('articles.id IN (:...ids)', { ids });
+      } else {
+        queryBuilder.andWhere('1=0'); // fetch any articles because '1=0' = false
+      }
+    }
+
     queryBuilder.orderBy('articles.createdAt', 'DESC');
-        
+    const articlesCount = await queryBuilder.getCount();
+
     if (query.limit) {
       queryBuilder.limit(query.limit);
     }
-    
+
     if (query.offset) {
       queryBuilder.offset(query.offset);
     }
-    
-    const articlesCount = await queryBuilder.getCount();
-    const articles = await queryBuilder.getMany();
 
-    return { articles, articlesCount }
+    let favoriteIds: number[] = [];
+
+    if (currentUserId) {
+      const currentUser = await this.userRepository.findOne(currentUserId, {
+        relations: ['favorites']
+      });
+      favoriteIds = currentUser.favorites.map(favorite => favorite.id);
+    }
+
+    const articles = await queryBuilder.getMany();
+    const articlesWithFavorited = articles.map(article => {
+      const favorited = favoriteIds.includes(article.id);
+      return { ...article, favorited }
+    })
+
+    return { articles: articlesWithFavorited, articlesCount };
   }
 
   async createArticle(currentUser: UserEntity, createArticleDto: CreateArticleDto): Promise<ArticleEntity> {
@@ -91,6 +119,46 @@ export class ArticleService {
 
   async findBySlugId(slug: string): Promise<ArticleEntity> {
     return await this.articleRepository.findOne({ slug });
+  }
+
+  async addArticleToFavorites(slug: string, currentUserId: number): Promise<ArticleEntity> {
+    const article = await this.findBySlugId(slug);
+    const user = await this.userRepository.findOne(currentUserId, {
+      relations: ['favorites']
+    });
+
+    const isNotFavorited =
+      user.favorites.findIndex(
+        articlesInFavorites => articlesInFavorites.id === article.id
+      ) === -1;
+
+    if (isNotFavorited) {
+      user.favorites.push(article);
+      article.favoritesCount++;
+      await this.userRepository.save(user);
+      await this.articleRepository.save(article);
+    }
+    return article;
+  }
+
+  async removeArticleToFavorites(slug: string, currentUserId: number): Promise<ArticleEntity> {
+    const article = await this.findBySlugId(slug);
+    const user = await this.userRepository.findOne(currentUserId, {
+      relations: ['favorites']
+    });
+
+    const articleIndex =
+      user.favorites.findIndex(
+        articlesInFavorites => articlesInFavorites.id === article.id
+      );
+
+    if (articleIndex >= 0) {
+      user.favorites.splice(articleIndex, 1);
+      article.favoritesCount--;
+      await this.userRepository.save(user);
+      await this.articleRepository.save(article);
+    }
+    return article;
   }
 
   buildArticleResponse(article: ArticleEntity): ArticleResponseInterface {
