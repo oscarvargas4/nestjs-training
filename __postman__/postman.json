@@ -1,0 +1,480 @@
+{
+  "info": {
+    "_postman_id": "2bdbe14a-b096-4921-9e73-a7c5aa32c69d",
+    "name": "NestJS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "id": "d905ffca-eb01-43d5-8fc2-54c5b816aa6d",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"user\":{\r\n        \"username\":\"bar\",\r\n        \"email\": \"bar@gmail.com\",\r\n        \"password\": \"123\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/users"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Article",
+      "id": "33165b24-4256-4e39-85a1-8ef019da8c70",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJiYXIiLCJlbWFpbCI6ImJhckBnbWFpbC5jb20iLCJpYXQiOjE2NjAzMTI0NTJ9.pFDKqD3QL2alhJD0RCXHH9lFbktYnzSoaHBIXrlb7OY",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Article",
+      "id": "b73cac6d-af12-4f11-8f2f-1af9ebb36544",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles/how-to-traing-your-dragon-24nas0.x7pbh"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Article",
+      "id": "8393360f-8409-4f3d-b2fb-1f12a362cf20",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"Did you already trained your dragon, for sure?\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles/how-to-traing-your-dragon-7qsdqz.6f2u6"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Article",
+      "id": "5cbf59e5-b7f7-49a4-a32d-664161e24571",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles/how-to-traing-your-dragon-a5p9tj.3cxze"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Articles",
+      "id": "c448883a-9b94-4c9b-89f3-8a997041c096",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/articles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "articles"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "0",
+              "disabled": true
+            },
+            {
+              "key": "offset",
+              "value": "2",
+              "disabled": true
+            },
+            {
+              "key": "tag",
+              "value": "dragons",
+              "disabled": true
+            },
+            {
+              "key": "author",
+              "value": "foo",
+              "disabled": true
+            },
+            {
+              "key": "favorited",
+              "value": "foo",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Profile By Username",
+      "id": "624ca250-b851-40d9-b17c-1f5f9c70a547",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NjAzMTIzOTN9.MUhChvh6SGD2N9sM7396wjLltCVMBUUw2cGWx7WxWys",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/profiles/bar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "profiles",
+            "bar"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Current User Feed",
+      "id": "98d54019-3496-4801-9c7e-c6a3c65e48d2",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NjAzMTI0OTl9.1v1qH5WcTQfI8lWZWhdWU5rRo7gMZhWOEey_BzXV0kQ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/articles/feed",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "articles",
+            "feed"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Follow Profile",
+      "id": "e9b37eff-d5ba-4d93-8d01-6f6447574271",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NjAyMzA2NjZ9.YySuXJhktEWw14rfGngH2uXyHtK0aR38CuOpC9rToYA",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/profiles/bar/follow",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "profiles",
+            "bar",
+            "follow"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UnFollow Profile",
+      "id": "64aff28a-8d7c-403b-aba0-bb10dd8f0682",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NjAyMzA2NjZ9.YySuXJhktEWw14rfGngH2uXyHtK0aR38CuOpC9rToYA",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/profiles/bar/follow",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "profiles",
+            "bar",
+            "follow"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Like Article",
+      "id": "52a47f09-1e9c-4242-aed0-815ef295c6e0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles/how-to-traing-your-dragon-a5p9tj.3cxze/favorite"
+      },
+      "response": []
+    },
+    {
+      "name": "UnLike Article Copy",
+      "id": "94d7a795-3fc0-4442-aa2d-86611e4a3ff2",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"article\":{\r\n        \"title\":\"How to traing your dragon\",\r\n        \"description\": \"Ever wonder how?\",\r\n        \"body\": \"You have to believe\",\r\n        \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/articles/how-to-traing-your-dragon-a5p9tj.3cxze/favorite"
+      },
+      "response": []
+    },
+    {
+      "name": "Login User",
+      "id": "0f2313bc-2c4b-4fb2-b190-e6b590e2afaa",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"user\":{\r\n        \"email\": \"foo@gmail.com\",\r\n        \"password\": \"123\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/users/login"
+      },
+      "response": []
+    },
+    {
+      "name": "Current User",
+      "id": "07aca860-4818-4e84-9b47-7fdd995a591d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"user\":{\r\n        \"email\": \"foo@gmail.com\",\r\n        \"password\": \"123\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/user"
+      },
+      "response": []
+    },
+    {
+      "name": "Update User",
+      "id": "940389cc-d50b-4af9-8da6-2f824eff508f",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmb28iLCJlbWFpbCI6ImZvb0BnbWFpbC5jb20iLCJpYXQiOjE2NTk5NjQ5MDd9.FLuzJr546bIX4Aycm-qPfFRFFDd8_jZVwhFrGknUZJE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"user\":{\r\n        \"email\": \"foo@gmail.com\",\r\n        \"bio\": \"123\",\r\n        \"image\": \"https://i.stack.imgur.com/xHWG8.jpg\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/user"
+      },
+      "response": []
+    }
+  ]
+}
